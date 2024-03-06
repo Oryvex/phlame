@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    # Enable RewriteEngine
+    RewriteEngine On
+
+    # Set RewriteBase if your application is not in the root directory
+    # RewriteBase /
+
+    # Block direct access to the source directory
+    RewriteRule ^source/ - [F]
+
+    # Route requests to index.php for processing
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
